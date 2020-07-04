@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:text="Add Course"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/nameET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:autofillHints="name"
+        android:ems="10"
+        android:hint="Name"
+        android:imeOptions="actionNext"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/majorET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:autofillHints="number"
+        android:ems="10"
+        android:hint="Major"
+        android:imeOptions="actionNext"
+        android:inputType="number|numberDecimal"/>
+
+    <EditText
+        android:id="@+id/courseNumET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:autofillHints="text"
+        android:ems="10"
+        android:hint="Course Number"
+        android:imeOptions="actionNext"
+        android:inputType="textLongMessage"/>
+
+    <EditText
+        android:id="@+id/professorET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:autofillHints="text"
+        android:ems="10"
+        android:hint="Professor"
+        android:imeOptions="actionNext"
+        android:inputType="textLongMessage"
+        android:textColorHint="#8A8080" />
+
+    <EditText
+        android:id="@+id/timeET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_weight="1"
+        android:autofillHints="text"
+        android:ems="10"
+        android:hint="Time"
+        android:imeOptions="actionNext"
+        android:inputType="textLongMessage"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:text="Save" />
+    </LinearLayout>
+
+</LinearLayout>
