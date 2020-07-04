@@ -33,8 +33,8 @@ public class DashBoard extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
-                    case R.id.about:
-                        startActivity(new Intent(getApplicationContext(), About.class));
+                    case R.id.settings:
+                        startActivity(new Intent(getApplicationContext(), Settings.class));
                         overridePendingTransition(0, 0);
                         return true;
                 }
