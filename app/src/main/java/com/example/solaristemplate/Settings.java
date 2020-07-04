@@ -3,6 +3,7 @@ package com.example.solaristemplate;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,7 +17,15 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        //initSettings();
         initBottomNavigationBar();
+    }
+
+    private void initSettings() {
+        String sortField = getSharedPreferences("MySchedulePreferences",
+                Context.MODE_PRIVATE).getString("sortfield","ITEM_NAME");
+        String sortOrder = getSharedPreferences("MySchedulePreferences",
+                Context.MODE_PRIVATE).getString("sortorder","ASC");
     }
 
     private void initBottomNavigationBar() {
