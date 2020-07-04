@@ -16,13 +16,16 @@ public class DashBoard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
-        //Initialize and assign variable
+        initBottomNavigationBar();
+    }
+
+    private void initBottomNavigationBar() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //Set Home selected
+        //Set dashboard tab as selected
         bottomNavigationView.setSelectedItemId(R.id.dashboard);
 
-        //Perform ItemSelectedListener
+        //Set listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {

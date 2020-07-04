@@ -16,13 +16,16 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        //Initialize and assign variable
+        initBottomNavigationBar();
+    }
+
+    private void initBottomNavigationBar() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //Set Home selected
+        //Set settings tab as selected
         bottomNavigationView.setSelectedItemId(R.id.settings);
 
-        //Perform ItemSelectedListener
+        //Set listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
