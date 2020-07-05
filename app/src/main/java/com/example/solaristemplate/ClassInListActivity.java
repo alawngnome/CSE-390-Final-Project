@@ -32,17 +32,17 @@ public class ClassInListActivity extends AppCompatActivity {
                     Context.MODE_PRIVATE).getString("sortorder","ASC");
             courseList = ds.getCourses(sortField, sortOrder);
             /*Time format will be time + date combined
-              Format of time will be Hr:Mi MM/DD/YYYY*/
+              Format of time will be MM/DD/YYYY/EEE Hr:Mi*/
 
             Bundle b = getIntent().getExtras();
             if(b!=null){
-                int day =  Integer.parseInt((String)b.get("dayofmonth"));
-                /*for(Course course: courseList) {
-                    int day_fromTime = Integer.parseInt(course.getTime().substring(9,11)); //geting DD from time format
+                int day =  Integer.parseInt((String)b.get("dayofweek"));
+                for(Course course: courseList) {
+                    int day_fromTime = Integer.parseInt(course.getTime().substring(11,14)); //geting EEE from time format
                     if(day_fromTime != day) {
                         courseList.remove(course);
                     }
-                }*/ //null pointer error because format does not exist yet
+                } //null pointer error because format does not exist yet
             }
 
             ds.close();
