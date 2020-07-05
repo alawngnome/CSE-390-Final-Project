@@ -34,11 +34,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_weight="1"
-        android:autofillHints="number"
+        android:autofillHints="name"
         android:ems="10"
         android:hint="Major"
         android:imeOptions="actionNext"
-        android:inputType="number|numberDecimal"/>
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/courseNumET"
@@ -47,11 +47,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_weight="1"
-        android:autofillHints="text"
+        android:autofillHints="number"
         android:ems="10"
         android:hint="Course Number"
         android:imeOptions="actionNext"
-        android:inputType="textLongMessage"/>
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/professorET"
@@ -60,12 +60,11 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_weight="1"
-        android:autofillHints="text"
+        android:autofillHints="name"
         android:ems="10"
         android:hint="Professor"
         android:imeOptions="actionNext"
-        android:inputType="textLongMessage"
-        android:textColorHint="#8A8080" />
+        android:inputType="textPersonName"/>
 
     <EditText
         android:id="@+id/timeET"
