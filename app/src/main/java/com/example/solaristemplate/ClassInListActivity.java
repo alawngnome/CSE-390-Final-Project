@@ -36,10 +36,10 @@ public class ClassInListActivity extends AppCompatActivity {
 
             Bundle b = getIntent().getExtras();
             if(b!=null){
-                int day =  Integer.parseInt((String)b.get("dayofweek"));
+                String day = (String)b.get("dayofweek");
                 for(Course course: courseList) {
-                    int day_fromTime = Integer.parseInt(course.getTime().substring(11,14)); //geting EEE from time format
-                    if(day_fromTime != day) {
+                    String day_fromTime = course.getTime().substring(11,14); //geting EEE from time format
+                    if(!day_fromTime.equals(day)) {
                         courseList.remove(course);
                     }
                 } //null pointer error because format does not exist yet
