@@ -1,3 +1,11 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ */
+
 package com.example.solaristemplate;
 
 import android.content.ContentValues;
@@ -9,7 +17,9 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
 /**
- * I refer to Chapter 5 of Iversen and Eierman's textbook for setting up this database helper.
+ * I refer to Chapter 5 of Iversen and Eierman's textbook for setting up this datasource class.
+ *
+ * Datasource class for connecting RecyclerView to the database.
  */
 public class ScheduleDataSource {
     /**
@@ -37,6 +47,11 @@ public class ScheduleDataSource {
         dbHelper.close();
     }
 
+    /**
+     * Method for inserting course into the database.
+     * @param course
+     * @return true on success, false otherwise
+     */
     public boolean insertCourse(Course course) {
         boolean success_flag = false;
         try  {
@@ -59,6 +74,11 @@ public class ScheduleDataSource {
         return success_flag;
     }
 
+    /**
+     * Method for deleting course from the database.
+     * @param courseID unique ID of the course
+     * @return true on success, false otherwise
+     */
     public boolean deleteCourse(int courseID) {
         boolean success_flag = false;
         try {
@@ -70,6 +90,11 @@ public class ScheduleDataSource {
         return success_flag;
     }
 
+    /**
+     * Method for updating course in the database.
+     * @param course
+     * @return true on success, false otherwise
+     */
     public boolean updateCourse(Course course) {
         boolean success_flag = false;
         try  {
@@ -91,6 +116,12 @@ public class ScheduleDataSource {
         return success_flag;
     }
 
+    /**
+     * Method for accessing the list of courses in the database.
+     * @param sort_field String that determines which field the list is sorted by
+     * @param sort_order String that determines which order to sort the list
+     * @return ArrayList of courses
+     */
     public ArrayList<Course> getCourses(String sort_field, String sort_order) {
         ArrayList<Course> courses = new ArrayList<Course>();
         try {

@@ -1,3 +1,11 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ */
+
 package com.example.solaristemplate;
 
 import android.os.Bundle;
@@ -16,17 +24,44 @@ import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * I refer to Chapters 4-6 of Iversen and Eierman's textbook for setting up this class.
+ *
+ * DialogFragment for adding courses into the database.
+ */
 public class AddCourseDialog extends DialogFragment implements DatePickerDialog.SaveDateListener, TimePickerDialog.SaveTimeListener {
-    private Course course; // course received from MainActivity or newly created course
-    private ArrayList<Course> courses; // list of courses received from MainActivity
-    private CourseAdapter adapter; // adapter received from MainActivity
+    /**
+     * Course received from MainActivity or newly created course.
+     */
+    private Course course;
+    /**
+     * List of courses received from MainActivity
+     */
+    private ArrayList<Course> courses;
+    /**
+     * Adapter received from MainActivity
+     */
+    private CourseAdapter adapter;
 
+    /**
+     * Constructor for AddCourseDialog
+     * @param course course for editing or null
+     * @param courses list of courses
+     * @param adapter adapter for RecyclerView
+     */
     public AddCourseDialog(Course course, ArrayList<Course> courses, CourseAdapter adapter) {
         this.course = course;
         this.courses = courses;
         this.adapter = adapter;
     }
 
+    /**
+     * Initializes and returns inflated view of the AddCourseDialog
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.add_course_dialog, container);
@@ -110,12 +145,20 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
         return view;
     }
 
+    /**
+     * Receives date from DatePickerDialog
+     * @param date
+     */
     @Override
     public void didFinishDatePickerDialog(Calendar date) {
         TextView dateTV = getView().findViewById(R.id.dateTV);
         dateTV.setText(DateFormat.format("MM/dd/yyyy/EEE", date));
     }
 
+    /**
+     * Receives time from TimePickerDialog
+     * @param time
+     */
     @Override
     public void didFinishTimePickerDialog(String time) {
         TextView timeTV = getView().findViewById(R.id.timeTV);

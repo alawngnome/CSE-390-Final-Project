@@ -1,3 +1,13 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ *
+ * TimePicker methods requires API 23 and higher!!!
+ */
+
 package com.example.solaristemplate;
 
 import android.os.Build;
@@ -13,15 +23,34 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 
+/**
+ * Child fragment for TimePickerDialog
+ */
 public class TimePickerDialog extends DialogFragment {
+    /**
+     * String to hold the time in HH:MI format
+     */
     String time;
 
+    /**
+     * Interface for passing time to parent fragment
+     */
     public interface SaveTimeListener {
         void didFinishTimePickerDialog(String time);
     }
 
+    /**
+     * Empty constructor for TimePickerDialog
+     */
     public TimePickerDialog() {}
 
+    /**
+     * Initializes the TimePickerDialog view and returns the inflated view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return TimePickerDialog view
+     */
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Nullable
     @Override

@@ -2,6 +2,8 @@
  * @authors Kevin Chao 112031000 and Samuel Ng 112330868
  * CSE 390 Final Project
  * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
  */
 
 package com.example.solaristemplate;
@@ -19,6 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 /**
+ *
+ * I refer to Chapters 5-6 of Iversen and Eierman's textbook for setting up the adapter class.
+ *
  * Adapter for RecyclerView for implementing the list of courses on the Home tab.
  */
 public class CourseAdapter extends RecyclerView.Adapter{

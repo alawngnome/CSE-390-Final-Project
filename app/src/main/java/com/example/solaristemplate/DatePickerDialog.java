@@ -1,3 +1,11 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ */
+
 package com.example.solaristemplate;
 
 import android.os.Bundle;
@@ -13,17 +21,34 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.Calendar;
 
+/**
+ * I refer to Chapter 4 of Iversen and Eierman's textbook for setting up this DatePickerDialog.
+ *
+ * Child fragment for the DatePickerDialog.
+ */
 public class DatePickerDialog extends DialogFragment {
     Calendar selectedDate;
 
+    /**
+     * Interface for passing selected date to the parent fragment.
+     */
     public interface SaveDateListener {
         void didFinishDatePickerDialog(Calendar date);
     }
 
+    /**
+     * Empty constructor required for DialogFragment
+     */
     public DatePickerDialog() {
-        // Empty constructor required for DialogFragment
     }
 
+    /**
+     * Initializes the DatePickerDialog view and returns the inflated view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return inflated view of the DatePickerDialog
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

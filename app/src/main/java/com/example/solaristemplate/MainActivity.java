@@ -1,3 +1,11 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ */
+
 package com.example.solaristemplate;
 
 import androidx.annotation.NonNull;
@@ -18,10 +26,26 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * I refer to Chapters 4-6 of Iversen and Eierman's textbook for setting up the MainActivity.
+ *
+ * Activity for HomeTab, displays all of the courses user has inputted.
+ */
 public class MainActivity extends AppCompatActivity implements CourseAdapter.OnNoteListener {
-    CourseAdapter adapter; // Instance of CourseAdapter used for updating recyclerView
-    ArrayList<Course> courses; // ArrayList of courses used for populating the recyclerView with courses
+    /**
+     * Instance of CourseAdapter used for updating RecyclerView.
+     */
+    CourseAdapter adapter;
+    /**
+     * ArrayList of courses used for populating the RecyclerView with courses.
+     */
+    ArrayList<Course> courses;
 
+    /**
+     * onCreate method for setting up layout and settings for MainActivity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements CourseAdapter.OnN
         }
     }
 
+    /**
+     * Method for setting up Adding Courses Button listener.
+     */
     private void initAddButton() {
         Button addBtn = findViewById(R.id.addBtn);
         addBtn.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +89,9 @@ public class MainActivity extends AppCompatActivity implements CourseAdapter.OnN
         });
     }
 
+    /**
+     * Method for initializing Bottom Navigation Bar.
+     */
     private void initBottomNavigationBar() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -89,6 +119,11 @@ public class MainActivity extends AppCompatActivity implements CourseAdapter.OnN
         });
     }
 
+    /**
+     * Method overridden for onNoteListener interface.
+     * @param position position in RecyclerView
+     * @param delete boolean for checking if button is delete or edit
+     */
     @Override
     public void onNoteClick(int position, boolean delete) {
         Course course = courses.get(position);
