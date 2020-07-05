@@ -1,3 +1,10 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ */
+
 package com.example.solaristemplate;
 
 import androidx.annotation.NonNull;
@@ -14,11 +21,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
 
+/**
+ * Creates the Calendar Tab, allowing users to tap on specific dates on a calendar,
+ * going to a list of classes on a specific day.
+ */
 public class CalendarActivity extends AppCompatActivity {
 
+    /**
+     * The calendar to be displayed.
+     */
     CalendarView calendar;
 
 
+    /**
+     * Sets up the calendar, and creates a listener for when a user taps a specific day of the calendar.
+     * When this happens, display the list of classes for a specific day.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +62,9 @@ public class CalendarActivity extends AppCompatActivity {
         initBottomNavigationBar();
     }
 
+    /**
+     * Method for initializing Bottom Navigation Bar.
+     */
     private void initBottomNavigationBar() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
