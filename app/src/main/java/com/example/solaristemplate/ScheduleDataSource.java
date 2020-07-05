@@ -148,4 +148,23 @@ public class ScheduleDataSource {
         }
         return courses;
     }
+
+    /**
+     * Method for getting ID of the last course.
+     * @return lastID
+     */
+    public int getLastCourseID() {
+        int lastID;
+        try {
+            String query = "SELECT MAX(_id) FROM " + ScheduleDBHelper.TABLE_NAME;
+            Cursor cursor = db.rawQuery(query, null);
+            cursor.moveToFirst();
+            lastID = cursor.getInt(0);
+            cursor.close();
+        }
+        catch (Exception e) {
+            lastID = -1;
+        }
+        return lastID;
+    }
 }

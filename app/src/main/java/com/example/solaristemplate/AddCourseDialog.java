@@ -10,6 +10,7 @@ package com.example.solaristemplate;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,10 +122,13 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
                     ds.open();
                     if (course.getCourse_ID() == -1) {
                         ds.insertCourse(course);
+                        course.setCourse_ID(ds.getLastCourseID());
                         courses.add(course);
+                        Log.d("COURSE ADDED", "COURSE ADDED");
                     }
                     else {
                         ds.updateCourse(course);
+                        Log.d("COURSE UPDATED", "COURSE UPDATED");
                     }
                     adapter.notifyDataSetChanged();
                     ds.close();
