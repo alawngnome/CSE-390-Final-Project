@@ -68,8 +68,10 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
                 String major = majorET.getText().toString();
                 String courseNum = courseNumET.getText().toString();
                 String professor = professorET.getText().toString();
-                String time = dateTV.getText().toString() + " " + timeTV.getText().toString();
-                if (name.equals("") || major.equals("") || courseNum.equals("") || professor.equals("") || time.equals("")) {
+                String date = dateTV.getText().toString();
+                String time = timeTV.getText().toString();
+                String date_time = date + " " + time;
+                if (name.equals("") || major.equals("") || courseNum.equals("") || professor.equals("") || date.equals("") || time.equals("")) {
                     getDialog().dismiss();
                     return;
                 }
@@ -77,7 +79,7 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
                 course.setMajor(major);
                 course.setCourse_num(courseNum);
                 course.setProfessor(professor);
-                course.setTime(time);
+                course.setTime(date_time);
 
                 ScheduleDataSource ds = new ScheduleDataSource(view.getContext());
                 try {

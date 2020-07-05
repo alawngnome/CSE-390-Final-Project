@@ -1,3 +1,9 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ */
+
 package com.example.solaristemplate;
 
 import android.content.Context;
@@ -12,21 +18,46 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * Adapter for RecyclerView for implementing the list of courses on the Home tab.
+ */
 public class CourseAdapter extends RecyclerView.Adapter{
-    private ArrayList<Course> courses; // list of courses received from MainActivity
-    private OnNoteListener mOnNoteListener; // OnNoteListener received from MainActivity
-    private Context context; // Context received from MainActivity
+    /**
+     * List of courses received from MainActivity.
+     */
+    private ArrayList<Course> courses;
+    /**
+     * OnNoteListener received from MainActivity for reacting to clicks on the card.
+     */
+    private OnNoteListener mOnNoteListener;
+    /**
+     * Context received from MainActivity
+     */
+    private Context context;
 
+    /**
+     * Inner ViewHolder class for RecyclerView, which functions as an OnClickListener for edit and delete buttons.
+     */
     public class CourseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView major_number;
-        public TextView class_name;
-        public TextView professor;
-        public TextView time;
-        public Button edit_button;
-        public Button delete_button;
+        /**
+         * TextViews present on each card.
+         */
+        public TextView major_number, class_name, professor, time;
+        /**
+         * Buttons present on each card.
+         */
+        public Button edit_button, delete_button;
 
+        /**
+         * OnNoteListener passed in from the adapter class.
+         */
         OnNoteListener onNoteListener;
 
+        /**
+         * Constructor for the CourseViewHolder.
+         * @param itemView view of each card
+         * @param onNoteListener listener for responding to clicks on the card
+         */
         public CourseViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             major_number = itemView.findViewById(R.id.major_and_number);
@@ -42,7 +73,7 @@ public class CourseAdapter extends RecyclerView.Adapter{
         }
 
         /**
-         * Getter methods
+         * Getter methods for the above fields
          */
         public TextView getMajor_number() {
             return major_number;
@@ -61,7 +92,7 @@ public class CourseAdapter extends RecyclerView.Adapter{
         }
 
         /**
-         * onClick method for edit and delete buttons
+         * onClick method for edit and delete buttons.
          * @param v widget argument
          */
         @Override
@@ -77,12 +108,24 @@ public class CourseAdapter extends RecyclerView.Adapter{
         }
     }
 
+    /**
+     * Constructor for the CourseAdapter
+     * @param courses list of courses
+     * @param onNoteListener listener for responding to clicks on cards
+     * @param context context of activity instantiating the adapter
+     */
     public CourseAdapter(ArrayList<Course> courses, OnNoteListener onNoteListener, Context context) {
         this.courses = courses;
         this.mOnNoteListener = onNoteListener;
         this.context = context;
     }
 
+    /**
+     * Method for displaying items in RecyclerView onCreate.
+     * @param parent
+     * @param viewType
+     * @return new CourseViewHolder
+     */
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -90,6 +133,11 @@ public class CourseAdapter extends RecyclerView.Adapter{
         return new CourseViewHolder(v, mOnNoteListener);
     }
 
+    /**
+     * Method for modifying elements on each card in RecyclerView.
+     * @param holder ViewHolder for all the cards
+     * @param position position on the list
+     */
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         CourseViewHolder courseHolder = (CourseViewHolder) holder;
@@ -100,6 +148,10 @@ public class CourseAdapter extends RecyclerView.Adapter{
         courseHolder.getTime().setText(courses.get(position).getTime());
     }
 
+    /**
+     * Method for accessing size of the list
+     * @return number of items in RecyclerView
+     */
     @Override
     public int getItemCount() {
         return courses.size();
