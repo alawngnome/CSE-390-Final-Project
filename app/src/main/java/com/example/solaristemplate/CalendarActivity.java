@@ -10,7 +10,7 @@ import android.widget.CalendarView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Calendar extends AppCompatActivity {
+public class CalendarActivity extends AppCompatActivity {
 
     CalendarView calendar;
 
@@ -20,17 +20,17 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        //Initializing Calendar
+        //Initializing CalendarActivity
         calendar = findViewById(R.id.calendar);
         //listener for date selection
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 //Open list of classes on specific day, through ClassinListActivity
-                Intent intent = new Intent(Calendar.this, ClassInListActivity.class);
+                Intent intent = new Intent(CalendarActivity.this, ClassInListActivity.class);
                 String extras = Integer.toString(dayOfMonth);
                 intent.putExtra("dayofmonth", extras); //looks like class once a month bois
-                Calendar.this.startActivity(intent);
+                CalendarActivity.this.startActivity(intent);
             }
         });
 
