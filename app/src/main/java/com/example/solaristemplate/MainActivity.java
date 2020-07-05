@@ -127,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements CourseAdapter.OnN
     @Override
     public void onNoteClick(int position, boolean delete) {
         Course course = courses.get(position);
+        ScheduleDataSource ds = new ScheduleDataSource(this);
         if (delete) {
-            ScheduleDataSource ds = new ScheduleDataSource(this);
             try {
                 ds.open();
                 ds.deleteCourse(course.getCourse_ID());
@@ -141,6 +141,15 @@ public class MainActivity extends AppCompatActivity implements CourseAdapter.OnN
             }
         }
         else {
+            try {
+                ds.open();
+                ds.deleteCourse(course.getCourse_ID());
+                ds.close();
+                courses.remove(course);
+            }
+            catch (Exception e) {
+                Toast.makeText(this, "Error deleting course", Toast.LENGTH_LONG).show();
+            }
             FragmentManager fragmentManager = getSupportFragmentManager();
             AddCourseDialog newFragment = new AddCourseDialog(course, courses, adapter);
             newFragment.show(fragmentManager, "Add Course Dialog");
