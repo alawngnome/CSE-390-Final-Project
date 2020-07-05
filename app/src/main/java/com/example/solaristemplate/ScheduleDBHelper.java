@@ -2,6 +2,8 @@
  * @authors Kevin Chao 112031000 and Samuel Ng 112330868
  * CSE 390 Final Project
  * SolarisTemplate App (Schedule Viewer for Students)
+ *
+ * Devices : Pixel 2 API 29, OnePlus A6003
  */
 
 package com.example.solaristemplate;

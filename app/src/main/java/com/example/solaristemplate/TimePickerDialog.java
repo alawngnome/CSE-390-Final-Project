@@ -3,6 +3,8 @@
  * CSE 390 Final Project
  * SolarisTemplate App (Schedule Viewer for Students)
  *
+ * Devices : Pixel 2 API 29, OnePlus A6003
+ *
  * TimePicker methods requires API 23 and higher!!!
  */
 
