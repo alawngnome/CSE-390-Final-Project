@@ -126,8 +126,8 @@ public class Settings extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext(), DashBoard.class));
+                    case R.id.calendar:
+                        startActivity(new Intent(getApplicationContext(), Calendar.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.home:
