@@ -96,9 +96,6 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
         save_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (course == null) {
-                    course = new Course();
-                }
                 String name = nameET.getText().toString();
                 String major = majorET.getText().toString();
                 String courseNum = courseNumET.getText().toString();
@@ -106,9 +103,40 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
                 String date = dateTV.getText().toString();
                 String time = timeTV.getText().toString();
                 String date_time = date + " " + time;
+                ScheduleDataSource ds = new ScheduleDataSource(view.getContext());
+                if (course != null) {
+                    try {
+                        ds.open();
+                        ds.deleteCourse(course.getCourse_ID());
+                        ds.close();
+                        courses.remove(course);
+                    } catch (Exception e) {
+                        Toast.makeText(view.getContext(), "Error deleting course", Toast.LENGTH_LONG).show();
+                    }
+                }
                 if (name.equals("") || major.equals("") || courseNum.equals("") || professor.equals("") || date.equals("") || time.equals("")) {
+                    if (course != null) {
+                        try {
+                            ds.open();
+                            if (course.getCourse_ID() == -1) {
+                                ds.insertCourse(course);
+                                courses.add(course);
+                            }
+                            else {
+                                ds.updateCourse(course);
+                            }
+                            adapter.notifyDataSetChanged();
+                            ds.close();
+                        }
+                        catch (Exception e) {
+                            Toast.makeText(view.getContext(), "Error inserting item", Toast.LENGTH_LONG).show();
+                        }
+                    }
                     getDialog().dismiss();
                     return;
+                }
+                if (course == null) {
+                    course = new Course();
                 }
                 course.setName(name);
                 course.setMajor(major);
@@ -116,7 +144,6 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
                 course.setProfessor(professor);
                 course.setTime(date_time);
 
-                ScheduleDataSource ds = new ScheduleDataSource(view.getContext());
                 try {
                     ds.open();
                     if (course.getCourse_ID() == -1) {
