@@ -10,6 +10,7 @@ package com.example.solaristemplate;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -68,12 +69,16 @@ public class ClassInListActivity extends AppCompatActivity  implements CourseAda
             Bundle b = getIntent().getExtras();
             if(b!=null){
                 String day = (String)b.get("dayofweek");
+
+                ArrayList<Course> removeList = new ArrayList<>();
                 for(Course course: courseList) {
-                    String day_fromTime = course.getTime().substring(11,14); //geting EEE from time format
+                    String day_fromTime = course.getTime().substring(11,14); //getting EEE from time format
                     if(!day_fromTime.equals(day)) {
-                        courseList.remove(course);
+                        //courseList.remove(course);
+                        removeList.add(course);
                     }
                 } //null pointer error because format does not exist yet
+                courseList.removeAll(removeList);
             }
 
             ds.close();
@@ -89,6 +94,7 @@ public class ClassInListActivity extends AppCompatActivity  implements CourseAda
             mRecyclerView.setAdapter(adapter);
         }
         catch(Exception e) {
+            Log.d("e.toString","EXCEPTION: " + e.toString());
             Toast.makeText(this, "Error retrieving courses on create", Toast.LENGTH_LONG).show();
         }
     }
