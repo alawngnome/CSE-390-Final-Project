@@ -1,18 +1,22 @@
 package com.example.solaristemplate;
 
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
-public class AddCourseDialog extends DialogFragment {
+public class AddCourseDialog extends DialogFragment implements DatePickerDialog.SaveDateListener {
     private Course course; // course received from MainActivity or newly created course
     private ArrayList<Course> courses; // list of courses received from MainActivity
     private CourseAdapter adapter; // adapter received from MainActivity
@@ -32,6 +36,17 @@ public class AddCourseDialog extends DialogFragment {
         final EditText courseNumET = view.findViewById(R.id.courseNumET);
         final EditText professorET = view.findViewById(R.id.professorET);
         final EditText timeET = view.findViewById(R.id.timeET);
+        final TextView dateTV = view.findViewById(R.id.dateTV);
+
+        Button change_button = view.findViewById(R.id.dateChangeBtn);
+        change_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getChildFragmentManager();
+                DatePickerDialog datePickerDialog = new DatePickerDialog();
+                datePickerDialog.show(fm, "Date Picker Dialog");
+            }
+        });
 
         Button save_button = view.findViewById(R.id.save_button);
         save_button.setOnClickListener(new View.OnClickListener() {
@@ -82,5 +97,11 @@ public class AddCourseDialog extends DialogFragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void didFinishDatePickerDialog(Calendar date) {
+        TextView dateTV = getView().findViewById(R.id.dateTV);
+        dateTV.setText(DateFormat.format("MM/dd/yyyy", date));
     }
 }
