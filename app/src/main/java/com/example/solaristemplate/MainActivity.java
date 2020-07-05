@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements CourseAdapter.OnNoteListener {
     CourseAdapter adapter; // Instance of CourseAdapter used for updating recyclerView
