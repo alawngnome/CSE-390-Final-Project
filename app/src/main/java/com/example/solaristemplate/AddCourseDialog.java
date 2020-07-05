@@ -102,6 +102,6 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
     @Override
     public void didFinishDatePickerDialog(Calendar date) {
         TextView dateTV = getView().findViewById(R.id.dateTV);
-        dateTV.setText(DateFormat.format("MM/dd/yyyy", date));
+        dateTV.setText(DateFormat.format("MM/dd/yyyy/EEEE", date));
     }
 }
