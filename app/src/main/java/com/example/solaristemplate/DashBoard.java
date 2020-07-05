@@ -26,7 +26,10 @@ public class DashBoard extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                //create new database object/event here
+                //Open list of classes on specific day, through ClassinListActivity
+                Intent intent = new Intent(DashBoard.this, ClassInListActivity.class);
+                //intent.putExtra("insert date here", value); use this to pass in date to add classes to
+                DashBoard.this.startActivity(intent);
             }
         });
 
