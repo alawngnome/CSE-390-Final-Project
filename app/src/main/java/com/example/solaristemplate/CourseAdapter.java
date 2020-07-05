@@ -19,6 +19,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 /**
+ *
+ * I refer to Chapters 5-6 of Iversen and Eierman's textbook for setting up the adapter class.
+ *
  * Adapter for RecyclerView for implementing the list of courses on the Home tab.
  */
 public class CourseAdapter extends RecyclerView.Adapter{

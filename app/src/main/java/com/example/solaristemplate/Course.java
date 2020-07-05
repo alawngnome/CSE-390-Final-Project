@@ -1,3 +1,9 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ */
+
 package com.example.solaristemplate;
 
 public class Course {
@@ -15,6 +21,9 @@ public class Course {
         course_ID = -1;
     }
 
+    /**
+     * Getters and setters for all fields
+     */
     public int getCourse_ID() {
         return course_ID;
     }

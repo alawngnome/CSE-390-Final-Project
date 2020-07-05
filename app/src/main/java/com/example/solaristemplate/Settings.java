@@ -1,3 +1,9 @@
+/**
+ * @authors Kevin Chao 112031000 and Samuel Ng 112330868
+ * CSE 390 Final Project
+ * SolarisTemplate App (Schedule Viewer for Students)
+ */
+
 package com.example.solaristemplate;
 
 import androidx.annotation.NonNull;
@@ -12,8 +18,18 @@ import android.widget.RadioGroup;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ *
+ * I refer to chapters 4-6 of Iversen and Eierman's textbook for setting up this activity.
+ *
+ * Settings activity for displaying and setting user preferences for course sorting.
+ */
 public class Settings extends AppCompatActivity {
 
+    /**
+     * onCreate method for setting up layout for Settings.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +41,9 @@ public class Settings extends AppCompatActivity {
         initBottomNavigationBar();
     }
 
+    /**
+     * Method for initializing settings and accessing SharedPreferences.
+     */
     private void initSettings() {
         String sortField = getSharedPreferences("MySchedulePreferences",
                 Context.MODE_PRIVATE).getString("sortfield","NAME");
@@ -62,6 +81,9 @@ public class Settings extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method for initializing listeners for the sort field radiogroup.
+     */
     private void initSortFieldClick() {
         RadioGroup rgSortField = findViewById(R.id.radioGroupFields);
         rgSortField.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -96,6 +118,9 @@ public class Settings extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method for initializing listeners for the sort order radiogroup.
+     */
     private void initSortOrderClick() {
         RadioGroup rgSortOrder = findViewById(R.id.radioGroupOrder);
         rgSortOrder.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -115,6 +140,9 @@ public class Settings extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method for initializing Bottom Navigation Bar.
+     */
     private void initBottomNavigationBar() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
