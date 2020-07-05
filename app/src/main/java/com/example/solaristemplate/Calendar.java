@@ -10,7 +10,7 @@ import android.widget.CalendarView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class DashBoard extends AppCompatActivity {
+public class Calendar extends AppCompatActivity {
 
     CalendarView calendar;
 
@@ -18,7 +18,7 @@ public class DashBoard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dash_board);
+        setContentView(R.layout.activity_calendar);
 
         //Initializing Calendar
         calendar = findViewById(R.id.calendar);
@@ -27,9 +27,9 @@ public class DashBoard extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 //Open list of classes on specific day, through ClassinListActivity
-                Intent intent = new Intent(DashBoard.this, ClassInListActivity.class);
+                Intent intent = new Intent(Calendar.this, ClassInListActivity.class);
                 //intent.putExtra("insert date here", value); use this to pass in date to add classes to
-                DashBoard.this.startActivity(intent);
+                Calendar.this.startActivity(intent);
             }
         });
 
@@ -41,14 +41,14 @@ public class DashBoard extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set dashboard tab as selected
-        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+        bottomNavigationView.setSelectedItemId(R.id.calendar);
 
         //Set listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.dashboard:
+                    case R.id.calendar:
                         return true;
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
