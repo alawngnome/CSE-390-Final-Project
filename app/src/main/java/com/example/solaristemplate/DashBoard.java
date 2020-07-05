@@ -28,7 +28,8 @@ public class DashBoard extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 //Open list of classes on specific day, through ClassinListActivity
                 Intent intent = new Intent(DashBoard.this, ClassInListActivity.class);
-                //intent.putExtra("insert date here", value); use this to pass in date to add classes to
+                String extras = Integer.toString(dayOfMonth);
+                intent.putExtra("dayofmonth", extras); //looks like class once a month bois
                 DashBoard.this.startActivity(intent);
             }
         });
