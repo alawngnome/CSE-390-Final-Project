@@ -6,8 +6,8 @@
     app:cardCornerRadius="4dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_margin="4dp">
 
         <TextView
@@ -26,29 +26,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/major_and_number"
+            android:padding="2dp"
             android:text="Class Description / name"
-            android:textSize="15sp"
-            android:padding="2dp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/professor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
+            android:padding="2dp"
             android:text="Professor"
-            android:textSize="15sp"
-            android:padding="2dp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
+            android:layout_below="@+id/professor"
+            android:padding="2dp"
             android:text="Time"
-            android:textSize="15sp"
-            android:padding="2dp" />
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/editBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edit"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="delete"
+            android:layout_below="@+id/editBtn"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
-
 </androidx.cardview.widget.CardView>
