@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class AddCourseDialog extends DialogFragment implements DatePickerDialog.SaveDateListener {
+public class AddCourseDialog extends DialogFragment implements DatePickerDialog.SaveDateListener, TimePickerDialog.SaveTimeListener {
     private Course course; // course received from MainActivity or newly created course
     private ArrayList<Course> courses; // list of courses received from MainActivity
     private CourseAdapter adapter; // adapter received from MainActivity
@@ -35,16 +35,25 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
         final EditText majorET = view.findViewById(R.id.majorET);
         final EditText courseNumET = view.findViewById(R.id.courseNumET);
         final EditText professorET = view.findViewById(R.id.professorET);
-        final EditText timeET = view.findViewById(R.id.timeET);
         final TextView dateTV = view.findViewById(R.id.dateTV);
+        final TextView timeTV = view.findViewById(R.id.timeTV);
 
-        Button change_button = view.findViewById(R.id.dateChangeBtn);
-        change_button.setOnClickListener(new View.OnClickListener() {
+        Button change_button_date = view.findViewById(R.id.dateChangeBtn);
+        change_button_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getChildFragmentManager();
                 DatePickerDialog datePickerDialog = new DatePickerDialog();
                 datePickerDialog.show(fm, "Date Picker Dialog");
+            }
+        });
+        Button change_button_time = view.findViewById(R.id.timeChangeBtn);
+        change_button_time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getChildFragmentManager();
+                TimePickerDialog timePickerDialog = new TimePickerDialog();
+                timePickerDialog.show(fm, "Time Picker Dialog");
             }
         });
 
@@ -59,7 +68,7 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
                 String major = majorET.getText().toString();
                 String courseNum = courseNumET.getText().toString();
                 String professor = professorET.getText().toString();
-                String time = timeET.getText().toString();
+                String time = dateTV.getText().toString() + " " + timeTV.getText().toString();
                 if (name.equals("") || major.equals("") || courseNum.equals("") || professor.equals("") || time.equals("")) {
                     getDialog().dismiss();
                     return;
@@ -102,6 +111,12 @@ public class AddCourseDialog extends DialogFragment implements DatePickerDialog.
     @Override
     public void didFinishDatePickerDialog(Calendar date) {
         TextView dateTV = getView().findViewById(R.id.dateTV);
-        dateTV.setText(DateFormat.format("MM/dd/yyyy/EEEE", date));
+        dateTV.setText(DateFormat.format("MM/dd/yyyy/EEE", date));
+    }
+
+    @Override
+    public void didFinishTimePickerDialog(String time) {
+        TextView timeTV = getView().findViewById(R.id.timeTV);
+        timeTV.setText(time);
     }
 }
